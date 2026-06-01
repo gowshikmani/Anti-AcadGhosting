@@ -1,0 +1,27 @@
+{
+  "name": "anti-acadghosting",
+  "version": "1.0.0",
+  "description": "anti-acadghosting is an application used to preventing academic ghosting and enhance the knowledge of practical skills. it will provided for universitites.",
+  "keywords": [
+    "hellocky",
+    "anti-acadghosting"
+  ],
+  "homepage": "https://github.com/gowshikmani/Anti-AcadGhosting#readme",
+  "bugs": {
+    "url": "https://github.com/gowshikmani/Anti-AcadGhosting/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gowshikmani/Anti-AcadGhosting.git"
+  },
+  "license": "ISC",
+  "author": "Gowshik Manikandan",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "npm install && npm run dev"
+  }
+}

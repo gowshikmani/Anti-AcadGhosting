@@ -1,58 +1,54 @@
-import react from 'react'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 const Login = () => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [role, setRole] = useState('student')
-    const [error, setError] = useState('')
-    const [isSubmitting, setIsSubmitting] = useState(false)
+  // 1. Establish state variables for input capturing
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [role, setRole] = useState('student'); // Default role matching user profile
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const { login } = useContext(AuthContext);
-    const navigate = useNavigate()
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        setIsSubmitting(true)
-        setError('')
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setIsSubmitting(true);
 
-        try {
-            const response = await fetch('http://localhost:5000/api/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password, role })
-            });
+    try {
+      // 2. Transmit payload to your Express API engine
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password, role }),
+      });
 
-            const data = await response.json();
+      const data = await response.json();
 
-            if (!response.ok) {
-                throw new Error(data.message || 'Authentication failed');
-            }
+      if (!response.ok) {
+        throw new Error(data.message || 'Authentication failed');
+      }
 
-            login(data.token, data.user);
+      // 3. Hand token data over to global context memory
+      login(data.user, data.token);
 
-            if (data.user.role === 'student') {
-                navigate('/student-dashboard');
-            } else if (data.user.role === 'teacher') {
-                navigate('/teacher-dashboard');
-            } else if (data.user.role === 'admin') {
-                navigate('/admin-dashboard');
-            }
-            else if (data.user.role === 'superadmin') {
-                navigate('/superadmin-dashboard');
-            }
-        } catch (err) {
-            setError(err.message||'something went wrong. Please try again.');
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
+      // 4. Divert the navigation course based on the verified server role
+      if (data.user.role === 'student') navigate('/student-dashboard');
+      else if (data.user.role === 'advisor') navigate('/advisor-dashboard');
+      else if (data.user.role === 'admin') navigate('/admin-dashboard');
+      else if (data.user.role === 'superadmin') navigate('/system-settings');
+      
+    } catch (err) {
+      setError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
-    return (
+  return (
     <div className="min-h-screen w-screen flex items-center justify-center bg-slate-950 px-4 text-slate-100 font-sans">
       <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-8 space-y-6">
         
