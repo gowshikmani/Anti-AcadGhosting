@@ -1,0 +1,126 @@
+.advisor-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.advisor-dashboard .page-header h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #f8fafc;
+}
+.advisor-dashboard .page-header p {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+.advisor-dashboard .dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2.5rem;
+  align-items: start;
+}
+.advisor-dashboard .dashboard-grid section {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.advisor-dashboard .dashboard-grid section h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 0.75rem;
+}
+.advisor-dashboard .allocation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.advisor-dashboard .allocation-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.advisor-dashboard .allocation-form .form-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+}
+.advisor-dashboard .allocation-form .form-group input, .advisor-dashboard .allocation-form .form-group textarea {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: #f1f5f9;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease;
+}
+.advisor-dashboard .allocation-form .form-group input:focus, .advisor-dashboard .allocation-form .form-group textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+.advisor-dashboard .allocation-form .btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.875rem;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.advisor-dashboard .allocation-form .btn-primary:hover {
+  background-color: #1d4ed8;
+}
+.advisor-dashboard .project-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.advisor-dashboard .project-cards-container .project-card {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+.advisor-dashboard .project-cards-container .project-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.advisor-dashboard .project-cards-container .project-card .card-header h4 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.advisor-dashboard .project-cards-container .project-card .card-header .badge-status-pending {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+}
+.advisor-dashboard .project-cards-container .project-card .meta-student {
+  font-size: 0.825rem;
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+}
+.advisor-dashboard .project-cards-container .project-card .card-desc {
+  font-size: 0.875rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+.advisor-dashboard .empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+/*# sourceMappingURL=advisordash.css.map */
