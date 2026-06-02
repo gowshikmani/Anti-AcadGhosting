@@ -1,0 +1,40 @@
+/* Custom Hardware-Accelerated Animation Layout Layers */
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.15;
+    filter: blur(12px);
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.25;
+    filter: blur(16px);
+  }
+}
+
+@keyframes microShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Micro-Utility Classes */
+.animate-shield-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+.shimmer-text-effect {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+  animation: microShimmer 2.5s infinite linear;
+}
+
+/* Fix active cross-browser transitions */
+.sidebar-transition-engine {
+  will-change: transform, opacity;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
