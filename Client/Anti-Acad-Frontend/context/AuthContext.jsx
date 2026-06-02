@@ -1,7 +1,5 @@
-import { createContext, useState, useEffect } from 'react';
-
-// Create the context identity gate
-export const AuthContext = createContext();
+import { useState, useEffect } from 'react';
+import { AuthContext } from './authContextSetup';
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -10,54 +8,48 @@ export const AuthProvider = ({ children }) => {
 
   // Synchronous session initialization loop on mount
   useEffect(() => {
-    const initializeSession = () => {
+    const restoreSession = () => {
       try {
-        const storedToken = localStorage.getItem('integrity_token');
-        const storedUser = localStorage.getItem('integrity_user');
+        const storedToken = localStorage.getItem('acad_ghosting_token');
+        const storedUser = localStorage.getItem('acad_ghosting_user');
 
         if (storedToken && storedUser) {
           setToken(storedToken);
           setUser(JSON.parse(storedUser));
         }
       } catch (error) {
-        console.error("Session restoration failure. Securing perimeter:", error);
-        // Wipe contaminated or corrupt state instances
-        localStorage.removeItem('integrity_token');
-        localStorage.removeItem('integrity_user');
+        console.error("Session tracking violation. Purging storage stacks:", error);
+        localStorage.removeItem('acad_ghosting_token');
+        localStorage.removeItem('acad_ghosting_user');
       } finally {
-        // Drop loading flag to signal ProtectedRoute that evaluations can begin
+        // Drop barrier to allow ProtectedRoute execution to begin safely
         setLoading(false);
       }
     };
 
-    initializeSession();
+    restoreSession();
   }, []);
 
   /**
-   * Orchestrate explicit, safe user onboarding upon API clearance
-   * @param {Object} userData - Contains unique identifiers and exact isolated role string
-   * @param {String} jwtToken - Verified signature payload from your Express API
+   * Safe onboarding trigger upon clean backend login verification
+   * @param {Object} userData - Expected shape: { id: string, email: string, role: 'student'|'advisor'|'admin'|'superadmin' }
+   * @param {String} jwtToken - Valid authorization bearer token
    */
   const login = (userData, jwtToken) => {
     setLoading(true);
-    
-    // Lock into physical localStorage memory bounds
-    localStorage.setItem('integrity_token', jwtToken);
-    localStorage.setItem('integrity_user', JSON.stringify(userData));
-    
-    // Set active memory hooks
+    localStorage.setItem('acad_ghosting_token', jwtToken);
+    localStorage.setItem('acad_ghosting_user', JSON.stringify(userData));
     setToken(jwtToken);
     setUser(userData);
-    
     setLoading(false);
   };
 
   /**
-   * Explicitly purge access tokens and clear memory stacks
+   * Complete memory cleanup routine
    */
   const logout = () => {
-    localStorage.removeItem('integrity_token');
-    localStorage.removeItem('integrity_user');
+    localStorage.removeItem('acad_ghosting_token');
+    localStorage.removeItem('acad_ghosting_user');
     setUser(null);
     setToken(null);
   };
