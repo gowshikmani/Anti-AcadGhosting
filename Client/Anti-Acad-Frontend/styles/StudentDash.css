@@ -1,0 +1,202 @@
+.student-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.student-dashboard .page-header h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #f8fafc;
+}
+.student-dashboard .page-header p {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+.student-dashboard .activation-banner {
+  background-color: rgba(59, 130, 246, 0.05);
+  border: 2px dashed rgba(59, 130, 246, 0.3);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 700px;
+}
+.student-dashboard .activation-banner .banner-content h3 {
+  font-size: 1.35rem;
+  color: #f1f5f9;
+  margin-bottom: 1rem;
+}
+.student-dashboard .activation-banner .banner-content p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+.student-dashboard .activation-banner .banner-content p strong {
+  color: #3b82f6;
+}
+.student-dashboard .activation-banner .banner-content .banner-desc {
+  color: #94a3b8;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+.student-dashboard .activation-banner .btn-activate {
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.student-dashboard .activation-banner .btn-activate:hover {
+  background-color: #2563eb;
+}
+.student-dashboard .dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+@media (max-width: 968px) {
+  .student-dashboard .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.student-dashboard .dashboard-grid section {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.student-dashboard .dashboard-grid section h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 0.75rem;
+}
+.student-dashboard .milestone-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.student-dashboard .milestone-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.student-dashboard .milestone-form .form-group label {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+.student-dashboard .milestone-form .form-group textarea {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  color: #f1f5f9;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  resize: vertical;
+}
+.student-dashboard .milestone-form .form-group textarea:focus {
+  outline: none;
+  border-color: #10b981;
+}
+.student-dashboard .milestone-form .btn-primary {
+  background-color: #10b981;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.875rem;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.student-dashboard .milestone-form .btn-primary:hover {
+  background-color: #059669;
+}
+.student-dashboard .meta-sidebar {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed #334155;
+}
+.student-dashboard .meta-sidebar h4 {
+  font-size: 0.825rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  margin-bottom: 0.75rem;
+}
+.student-dashboard .meta-sidebar p {
+  font-size: 0.875rem;
+  margin-bottom: 0.4rem;
+  color: #cbd5e1;
+}
+.student-dashboard .timeline-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+  border-left: 2px solid #334155;
+  padding-left: 1.5rem;
+  margin-left: 0.5rem;
+}
+.student-dashboard .timeline-stream .timeline-card {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  position: relative;
+}
+.student-dashboard .timeline-stream .timeline-card::before {
+  content: "";
+  position: absolute;
+  left: -1.95rem;
+  top: 1.5rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #334155;
+  border: 2px solid #1e293b;
+}
+.student-dashboard .timeline-stream .timeline-card .timeline-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.student-dashboard .timeline-stream .timeline-card .timeline-meta .log-date {
+  font-size: 0.825rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+.student-dashboard .timeline-stream .timeline-card .timeline-meta .badge-status {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+}
+.student-dashboard .timeline-stream .timeline-card .timeline-meta .badge-status.pending-review {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+.student-dashboard .timeline-stream .timeline-card .timeline-meta .badge-status.reviewed {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+.student-dashboard .timeline-stream .timeline-card .log-text {
+  font-size: 0.875rem;
+  color: #e2e8f0;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+/*# sourceMappingURL=StudentDash.css.map */
